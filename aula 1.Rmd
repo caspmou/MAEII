@@ -1,0 +1,45 @@
+---
+title: "Aula 1"
+author: "Lucas Moura - 195864"
+date: "2025-08-28"
+output: html_document
+---
+```{r Ex0}
+c(2,5,9) # conjunto númerico
+c("Brasil", "Mexico", "Uruguai") #conjunto caractere
+c(TRUE, FALSE, TRUE)
+ x <- 5
+ y <- 10
+ z <- x+y
+
+# mean()  = média
+# median() = mediana
+```
+
+
+```{r Ex1}
+#atalho para criação do ctrl+alt+I
+# Criar 1 objeto simples
+# Crie um objeto PIB_Brasil com valor 2200 em bilhões de reais
+PIB_Brasil <- 2200
+
+# Crie um objeto POP_Brasil com valor 210 em milhões de pessoas
+POP_Brasil <- 210
+```
+```{r Ex2}
+#Calculo do PIB per Capital
+PIB_PC <- PIB_Brasil/POP_Brasil
+PIB_PC
+```
+```{r Ex3}
+# Criar um vetor chamado paises com 3 nações.
+paises <- c("Brasil", "Mexico", "Uruguai")
+# Criar um vetor chamado pib com valores ficticios para esses paises em bilhões
+pib <- c(2200, 2160, 800)
+# Criar um vetor inflação com valores ficticios para os mesmos paises
+inflação <- c(7.2, 10.1, 3.1)
+dados <- data.frame(paises=paises, pib=pib, inflação=inflação)
+```
+```{r plot}
+barplot(dados$pib, names.arg=dados$paises, main = "PIB por pais", col="blue")
+```

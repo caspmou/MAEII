@@ -1,0 +1,33 @@
+---
+title: "Atividade prática 1"
+author: "Lucas Moura - 195864"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r Conjuntos}
+produtos <- c("Aço", "Açúcar", "Soja", "Carne Bovina")
+exportacoes_antes <- c(5200, 3100, 14500, 7200) # em milhões de US$
+exportacoes_depois <- c(4000, 2500, 15000, 7100) # após tarifas (fictício)
+variação <- c((exportacoes_depois-exportacoes_antes)/exportacoes_antes*100)
+```
+```{r Data}
+dados <- data.frame(produtos=produtos, exportacoes_antes=exportacoes_antes, exportacoes_depois=exportacoes_depois, variação=variação)
+dados
+```
+```{r plot}
+plot <- as.matrix(dados[, c("exportacoes_antes", "exportacoes_depois")])
+rownames(plot) <- dados$produtos
+barplot(height = t(plot), beside = TRUE, main = "Efeito das Tarifas Americanas\n nas Exportações Brasileiras",
+  xlab = "Produtos",
+  ylab = "Em milhões de US$",
+  col = c("#1b9e77","#d95f02"),
+)
+legend("topleft", legend=c("Antes", "Depois"),fill = c("#1b9e77","#d95f02"), bty="n" )
+```
+
+## Análise Econômica
+A política protecionista do governo Trump impactou negativamente as exportações brasileiras. Entre os produtos com maiores quedas de exportação estão o aço e o açúcar, representando uma queda de 23,08% e 19,35%, respectivamente. É esperado que os produtores dessas commodities solicitem mais pedidos de compensação à OMC.
+Constatando a tendência geral, a soja apresentou um aumento de 3,45% nas exportações, o que indica ou uma isenção de tarifas, ou um redirecionamento do escoamento da commodity provavelmente para a China, sendo um reflexo da guerra comercial.
