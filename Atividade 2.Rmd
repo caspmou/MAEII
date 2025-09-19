@@ -1,0 +1,41 @@
+---
+title: "Atividade Prática 2"
+author: "Lucas Moura"
+date: "2025-09-19"
+output: pdf_document
+---
+
+
+```{r Data}
+genero <- c("Ação", "Comédia", "Drama", "Animação")
+ingressos <- c(820, 460, 530, 690) # milhares de ingressos
+avaliação <- c( 8.6, 7.1, 7.8, 8.2)
+```
+```{r Dataframe}
+cinema <- data.frame(genero=genero, ingressos=ingressos, avaliação=avaliação, stringsAsFactors = TRUE)
+```
+```{r Estatistica Descritiva}
+media_ingressos <- mean(cinema$ingressos)
+mediana_ingressos <- median(cinema$ingressos)
+top_ingressos <- cinema$genero[which.max(cinema$ingressos)]
+dp_ingressos <- sd(cinema$ingressos)
+media_avaliação <- mean(cinema$avaliação)
+mediana_avaliação <- median(cinema$avaliação)
+drama <- 530/sum(cinema$ingressos)
+Ação <- 820/sum(cinema$ingressos)
+```
+```{r Plot}
+Mais_assistidos <- barplot(cinema$avaliação,
+                           names.arg = cinema$genero,
+                           main = "Generos Mais Assistidos",
+                           ylab = "Milhares de Ingressos",
+                           col = c("#1249FC","#12FC2E", "#FC1254", "#FCBD12"),
+                           
+)
+```
+## Interpretação
+
+Apesar de a comédia ser o gênero menos assistido, no total, obras "escapistas" vendem mais ingressos. Ação e Animação performam acima da mediana de ingressos vendidos, enquanto Drama e Comédia estão abaixo.
+O desvio padrão, para a quantidade média de ingressos vendidos, está razoável, há concentração de vendas em dois gêneros, porém não é nada alarmante.
+Considerando ainda as avaliações, os gêneros menos assistidos possuem boas avaliações, porém abaixo da média.
+Como os gêneros mais assistidos também são os mais bem avaliados, deve-se reforçar e ampliar as salas para esses filmes, satisfazendo o público e maximizando a renda.
