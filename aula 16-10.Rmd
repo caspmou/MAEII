@@ -1,0 +1,26 @@
+---
+title: ''
+output: pdf_document
+date: "2025-10-17"
+---
+
+
+```{r}
+base <- read.csv("C:\\Temp\\Documentos\\metodos\\compet_aula.csv", stringsAsFactors = FALSE)
+# Padrão de indicadores - Z-score
+a1 <- scale(base$Empregos.no.setor.criativo)
+a2 <- scale(base$Crédito.per.capita)
+a3 <- scale(base$PIB.per.capita)
+a4 <- scale(base$Renda.média.do.trabalho.formal)
+```
+
+```{r}
+ # Indice médio de atratividade
+base$IAE <- (a1+a2+a3+a4)/4
+
+# Ranking
+rank <- base[order(-base$IAE), c("Município", "UF", "IAE")]
+head(rank,10)
+tail(rank, 10)
+```
+
